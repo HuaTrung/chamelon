@@ -99,7 +99,6 @@ class App extends Component {
         let new_id=Math.floor(Math.random() * 1000)
         setCookie("id_chamelon", new_id,1);
         id_chamelon=new_id
-        this.setState({playerId: id_chamelon});
     } 
     else {
         const docRef = doc(db, "players_online", id_chamelon);
@@ -108,15 +107,14 @@ class App extends Component {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data());
             let player = docSnap.data();
-            this.setState({player:player, playerName:player.name,playerId: id_chamelon})
+            this.setState({player:player, playerName:player.name})
             this.renderPage('splash');
         } else {
         // doc.data() will be undefined in this case
-        console.log("No such document!");
+             console.log("No such document!");
         }
-
     }
-    
+    this.setState({playerId: id_chamelon})
     this.initSocket();
   }
 
@@ -279,9 +277,13 @@ class App extends Component {
     //     this.renderPage('results');
     // })
   };
-   login = async () => {
+   login = () => {
     let player = new Player(this.state.playerName,this.state.playerId);
-    await setDoc(doc(db, "players_online", player.player_id),player.toJSON());
+    db.collection("players_online").doc(player.player_id).set(player.toJSON()
+      ).then(function() {
+        console.log("Frank created");
+      });
+      
   };
 
   setCode = (code) => {
