@@ -111,13 +111,13 @@ class App extends Component {
       game: game,
       players: game.players.map((player) => player.name),
     });
-    const unsub = onSnapshot(doc(db, "rooms", this.state.code_game), (doc) => {
-      console.log("Current data 2: ", doc.data());
-      let event1 = doc.data().events;
+    const unsub = onSnapshot(doc(db, "rooms", this.state.code_game), (item) => {
+      console.log("Current data 2: ", item.data());
+      let event1 = item.data().events;
       if (event1 == undefined) {
         return;
       }
-      switch (doc.data().events.name) {
+      switch (item.data().events.name) {
         case "chameleon": {
           if ((event1.data = this.state.player.name)) {
             let player = this.state.player;
@@ -154,6 +154,9 @@ class App extends Component {
           });
           this.renderPage("results");
           break;
+        case "new_game":
+            this.renderPage("lobby");
+            break;
         case "game_started":
           this.setState({
             message: "",
@@ -196,9 +199,9 @@ class App extends Component {
         this.state.io.to("players_online").emit("on_connect", "", id_chamelon);
         const unsub = onSnapshot(
           doc(db, "players_online", id_chamelon),
-          (doc) => {
-            let data = doc.data().events.data;
-            switch (doc.data().events.name) {
+          (iteam) => {
+            let data = iteam.data().events.data;
+            switch (iteam.data().events.name) {
               case "new_game":
                 this.setState({
                   code_game: data.code,
@@ -462,6 +465,7 @@ class App extends Component {
             isMyTurn={this.state.isMyTurn}
             timer={this.state.timer}
             reset={this.reset}
+            isHost={this.state.isHost}
           />
         )}
         {this.state.rendered === "vote" && (

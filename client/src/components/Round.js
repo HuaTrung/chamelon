@@ -55,11 +55,12 @@ export default class Round extends Component {
                         <form className="form-group">
                             <label>Your clue:</label>
                             <input maxLength="36" ref={this.clue} />
+                            
                             <button className="button--default" onClick={this.submitWord} type="submit">Submit</button>
                         </form>
-                    }
+                    }{this.props.isHost &&
                                                 <button className="button--default" onClick={this.props.reset} type="submit">Reset Game</button>
-
+                    }
                     <Chat messages={this.props.messages} code={this.props.code} socket={this.props.socket} />
                 </div>
             </div>
