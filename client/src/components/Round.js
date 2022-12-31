@@ -58,6 +58,8 @@ export default class Round extends Component {
                             <button className="button--default" onClick={this.submitWord} type="submit">Submit</button>
                         </form>
                     }
+                                                <button className="button--default" onClick={this.props.reset} type="submit">Reset Game</button>
+
                     <Chat messages={this.props.messages} code={this.props.code} socket={this.props.socket} />
                 </div>
             </div>

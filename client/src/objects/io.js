@@ -1,22 +1,23 @@
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc,setDoc, addDoc,collection,serverTimestamp } from "firebase/firestore"; 
 
 
 export class IO {
     constructor(db) {
         this.db = db
-        this.code=null
+        this.doc=null
     }
 
-    to(code){
-        this.code=code
+    to(doc){
+        this.doc=doc
         return this
     }
 
-    async emit(name, data){
-        await setDoc(doc(this.db, "rooms/"+this.code+"/events", (new Date()).getTime()), {
+    async emit(name, data,extend){
+        const cityRef = doc(this.db, this.doc, extend);
+        setDoc(cityRef, { events: {
             name: name,
-            data: data
-          });
-          
+            data: data,
+            time: serverTimestamp()
+        } }, { merge: true });
     }
 }

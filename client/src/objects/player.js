@@ -7,6 +7,11 @@ export class Player {
         this.isChameleon = false;
         this.submittedWord = '';
         this.votedFor = '';
+        this.room="";
+        this.event={
+            name:"",
+            data:""
+        };
     }
 
     vote(player) {

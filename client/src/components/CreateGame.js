@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import './CreateGame.css';
 import {Game} from '../objects/game'
-import {Player} from '../objects/player'
 
 import { doc, setDoc } from "firebase/firestore"; 
 import { collection, addDoc } from "firebase/firestore"; 
@@ -26,15 +25,20 @@ export default class CreateGame extends Component {
 
     createGame = async (e) => {
         e.preventDefault();
-        let player = new ("1","2","3");
-        let game = new Game(this.props.player, 1, 2,3,4,this.props.db);
         if(this.state.name !== '') {
+            let game = new Game(this.state.name,this.props.db);
             var db = this.props.db;
+            game.playerJoin(this.props.player)
             var json = game.toJSON()
             await setDoc(doc(db, "rooms", game.code), 
                 json
             );
-            game.playerJoin(player)
+            const cityRef = doc(db, 'players_online', this.props.player.player_id);
+            setDoc(cityRef, { isHost: true, room:game.code }, { merge: true });
+            this.props.notify_player("new_game",{
+                code:game.code,
+                playerId:this.props.player.player_id
+            })
             this.props.renderPage('lobby');
         }
     }

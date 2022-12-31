@@ -1,6 +1,6 @@
 
 import {IO} from './io'
-
+import {topics} from './topics'
 function generateCode(len) {
     let code = "";
 
@@ -14,19 +14,23 @@ function generateCode(len) {
 var io = null
 var games = null
 var uuid =null
-var topics =null
 export class Game {
-    constructor(voteTime, turnTime, topicSelected,db) {
+    constructor(name,db) {
+        this.name=name
         this.code = generateCode(4);
         this.players = [];
         this.chat = [];
         this.turn = 0;
         this.status = 'lobby';
-        this.events = []
+        this.events = {
+            name:"",
+            data:"",
+            time:""
+        };
         this.io = new IO(db)
-        this.voteTime = voteTime || 30;
-        this.turnTime = turnTime || 30;
-        this.topicSelected = topicSelected || 'random';
+        // this.voteTime = voteTime || 30;
+        // this.turnTime = turnTime || 30;
+        // this.topicSelected = topicSelected || 'random';
     }
 
     shuffle(array) {
@@ -38,9 +42,9 @@ export class Game {
 
     // Join a player to this game
     playerJoin(player) {
-        this.players.push(player);
+        this.players.push({name:player.name,id:player.player_id});
         //update lobby with player names
-        this.io.to(this.code).emit('update players', player.toJSON());
+        // this.io.to(this.code).emit('update_players', player.toJSON());
     };
 
     toJSON() {
@@ -120,43 +124,43 @@ export class Game {
         this.players.forEach(player => {
             if(player === this.chameleon) {
                 console.log(player.name + ' is the chameleon.');
-                player.socket.join(`${this.code}-chameleon`);
+                this.io.to('rooms').emit('chameleon', player.name, this.code);
+                // player.socket.join(`${this.code}-chameleon`);
             } else {
                 console.log(player.name + ' is a player.');
-                player.socket.join(`${this.code}-players`);
+                // player.socket.join(`${this.code}-players`);
             }
         });
 
         this.shuffle(this.players);
-
-        this.io.to(`${this.code}-chameleon`).emit('game started', {topic: this.topic, playerType: 'chameleon'});
-        this.io.to(`${this.code}-chameleon`).emit('chameleon');
-        this.io.to(`${this.code}-players`).emit('game started', {topic: this.topic, playerType: 'player', secretWord: this.secretWord});
+        this.io.to('rooms').emit('game_started', {topic: this.topic, playerType: 'chameleon',secretWord:this.secretWord},this.code);
+        // this.io.to(`${this.code}-chameleon`).emit('chameleon');
+        // this.io.to(`${this.code}-players`).emit('game started', {topic: this.topic, playerType: 'player', secretWord: this.secretWord});
         this.playerTurn(this.players[this.turn]);
     };
 
-    startTimer(seconds, player) {
+    // startTimer(seconds, player) {
 
-        this.io.to(this.code).emit('update timer', seconds)
-        let countDown = () => {
-            this.io.to(this.code).emit('update timer', seconds)
-            seconds--;
-            if(seconds < 0) {
-                this.io.to(this.code).emit('receive message', {author: 'System', content: `${player.name} failed to give a clue in time.`});
-                clearInterval(this.timerInterval);
-                this.endTurn(player);
-            }
-        };
+    //     this.io.to(this.code).emit('update timer', seconds)
+    //     let countDown = () => {
+    //         this.io.to(this.code).emit('update timer', seconds)
+    //         seconds--;
+    //         if(seconds < 0) {
+    //             this.io.to(this.code).emit('receive message', {author: 'System', content: `${player.name} failed to give a clue in time.`});
+    //             clearInterval(this.timerInterval);
+    //             this.endTurn(player);
+    //         }
+    //     };
         
-        this.timerInterval = setInterval(countDown, 1000)
-    }
+    //     this.timerInterval = setInterval(countDown, 1000)
+    // }
 
     playerTurn(player) {
         console.log(player.name + "'s turn");
-        this.io.to(this.code).emit('receive message', {author: 'System', content: `It is ${player.name}'s turn.`});
-        this.io.to(player.socketId).emit('my turn');
-        this.io.to(this.code).emit('current turn', player.name);
-        this.startTimer(this.turnTime, player);
+        // this.io.to('rooms').emit('receive message', {author: 'System', content: `It is ${player.name}'s turn.`},this.code);
+        // this.io.to('players').emit('my_turn',player.player_id);
+        // this.io.to('rooms').emit('current_turn', player.name,this.code);
+        // this.startTimer(this.turnTime, player);
     };
 
     endTurn() {

@@ -15,7 +15,7 @@ export default class Lobby extends Component {
                     <div className="back" onClick={this.back}></div>
                     <div className="title">
                         <h2>Game Code:</h2>
-                        <h1>{this.props.code}</h1>
+                        <h1>{this.props.code_game}</h1>
                     </div>
                     <p className="lobby__info">Do not lock your device, or you will be disconnected.</p>
                     <p className="lobby__info">You need at least 3 players to play.</p>
