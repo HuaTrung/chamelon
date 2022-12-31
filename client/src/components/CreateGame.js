@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 
 import './CreateGame.css';
+import {Game} from '../objects/game'
+import {Player} from '../objects/player'
+
+import { doc, setDoc } from "firebase/firestore"; 
+import { collection, addDoc } from "firebase/firestore"; 
 
 export default class CreateGame extends Component {
 
@@ -19,17 +24,17 @@ export default class CreateGame extends Component {
         this.props.renderPage('splash');
     }
 
-    createGame = e => {
+    createGame = async (e) => {
         e.preventDefault();
+        let player = new ("1","2","3");
+        let game = new Game(this.props.player, 1, 2,3,4,this.props.db);
         if(this.state.name !== '') {
-            this.props.socket.emit('create game',
-                {
-                    name: this.state.name,
-                    turnTime: this.state.turnTime,
-                    voteTime: this.state.voteTime,
-                    topic: this.state.topic,
-                }
+            var db = this.props.db;
+            var json = game.toJSON()
+            await setDoc(doc(db, "rooms", game.code), 
+                json
             );
+            game.playerJoin(player)
             this.props.renderPage('lobby');
         }
     }

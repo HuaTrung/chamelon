@@ -347,8 +347,9 @@ io.on('connection', (socket) => {
     socket.on("create game", (config) => {
         console.log(config);
         // Create our new player instance
-        let player = new Player(config.name, socket, socketId);
-        player.isHost = true;
+        // let player = new Player(config.name, socket, socketId);
+        // player.isHost = true;
+        var player=null
         // Create our new game instance
         let game = new Game(player, socket, config.turnTime, config.voteTime, config.topic);
 

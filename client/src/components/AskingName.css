@@ -1,0 +1,13 @@
+.--splash {
+    background-color: #EE7866;
+}
+
+.brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FAFAFA;
+    font-family: 'Arvo', serif;
+    width: 100%;
+    height: 75%;
+}

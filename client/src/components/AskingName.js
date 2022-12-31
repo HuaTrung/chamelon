@@ -1,20 +1,16 @@
 import React, { Component } from 'react'
 
-import './Splash.css';
+import './AskingName.css';
 
-export default class Splash extends Component {
+export default class AskingName extends Component {
 
     constructor(props) {
         super(props);
 
-     
     }
     joinGame = () => {
-        this.props.renderPage('join');
-    }
-
-    newGame = () => {
-        this.props.renderPage('create');
+        this.props.login()
+        this.props.renderPage('splash');
     }
     render() {
         return (
@@ -25,10 +21,11 @@ export default class Splash extends Component {
                     </div>
                     <div className="button-group">
                     <div>
-                                <label>Name: {this.props.name} </label>
+                                <label>Name</label>
+                                <input onChange={this.props.changeName} />
                             </div>
-                        <button className="button--default" onClick={this.joinGame}>Join Game</button>
-                        <button className="button--default" onClick={this.newGame}>New Game</button>
+                            <button className="button--default" onClick={this.joinGame}>GO</button>
+
                     </div>
                 </div>
             </div>
