@@ -119,7 +119,7 @@ class App extends Component {
       }
       switch (doc.data().events.name) {
         case "chameleon": {
-          if ((event1.data = this.player.name)) {
+          if ((event1.data = this.state.player.name)) {
             let player = this.state.player;
             player.isChameleon = true;
             this.setState({ isChameleon: true, player: player });
