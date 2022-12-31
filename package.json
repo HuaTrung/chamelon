@@ -19,5 +19,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jason Prickett",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HuaTrung/chamelon.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/HuaTrung/chamelon/issues"
+  },
+  "homepage": "https://github.com/HuaTrung/chamelon#readme"
 }
