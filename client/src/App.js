@@ -135,6 +135,23 @@ class App extends Component {
               { merge: true }
             );
           }
+          else{
+            let player = this.state.player;
+            player.isChameleon = false;
+            this.setState({ isChameleon: false, player: player });
+            const cityRef = doc(
+              this.db,
+              "players_online",
+              this.state.player.playerId
+            );
+            setDoc(
+              cityRef,
+              {
+                isChameleon: false,
+              },
+              { merge: true }
+            );
+          }
           break;
         }
         case "start_vote":
