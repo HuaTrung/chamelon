@@ -1,6 +1,15 @@
 
 import {IO} from './io'
 import {topics} from './topics'
+import {
+    doc,
+    onSnapshot,
+    setDoc,
+    getDoc,
+    query,
+    collection,
+    orderBy,
+  } from "firebase/firestore";
 function generateCode(len) {
     let code = "";
 
@@ -86,7 +95,7 @@ export class Game {
         }
     }
 
-    startRound(topic='') {
+    startRound(topic='',db) {
         console.log('Round starting.');
         this.players.forEach(player => {
             player.isChameleon = false;
@@ -121,19 +130,42 @@ export class Game {
         this.secretWord = this.topic.words[Math.floor(Math.random() * this.topic.words.length)];
         //join chameleon to room-chameleon
         //join others to room-players
-        this.players.forEach(player => {
-            if(player === this.chameleon) {
+        this.players.forEach(async (player) =>  {
+            if(player.id === this.chameleon.id) {
                 console.log(player.name + ' is the chameleon.');
-                this.io.to('rooms').emit('chameleon', player.name, this.code);
+                const cityRef = doc(
+                    db,
+                    "players_online",
+                    player.id
+                );
+                await setDoc(
+                cityRef,
+                {
+                    isChameleon: true,
+                },
+                { merge: true }
+                );
                 // player.socket.join(`${this.code}-chameleon`);
             } else {
                 console.log(player.name + ' is a player.');
+                const cityRef = doc(
+                    db,
+                    "players_online",
+                    player.id
+                );
+                await setDoc(
+                cityRef,
+                {
+                    isChameleon: false,
+                },
+                { merge: true }
+                );
                 // player.socket.join(`${this.code}-players`);
             }
         });
 
         this.shuffle(this.players);
-        this.io.to('rooms').emit('game_started', {topic: this.topic, playerType: 'chameleon',secretWord:this.secretWord},this.code);
+        this.io.to('rooms').emit('game_started', {chameleon_id: this.chameleon.id,topic: this.topic, playerType: 'chameleon',secretWord:this.secretWord},this.code);
         // this.io.to(`${this.code}-chameleon`).emit('chameleon');
         // this.io.to(`${this.code}-players`).emit('game started', {topic: this.topic, playerType: 'player', secretWord: this.secretWord});
         this.playerTurn(this.players[this.turn]);

@@ -110,50 +110,13 @@ class App extends Component {
       game: game,
       players: game.players.map((player) => player.name),
     });
-    const unsub = onSnapshot(doc(db, "rooms", this.state.code_game), (item) => {
+    const unsub = onSnapshot(doc(db, "rooms", this.state.code_game), async (item) => {
       console.log("Current data 2: ", item.data());
       let event1 = item.data().events;
       if (event1 == undefined) {
         return;
       }
       switch (item.data().events.name) {
-        case "chameleon": {
-          if ((event1.data == this.state.player.name)) {
-            let player = this.state.player;
-            player.isChameleon = true;
-            this.setState({ isChameleon: true, player: player });
-            const cityRef = doc(
-              this.db,
-              "players_online",
-              this.state.player.playerId
-            );
-            setDoc(
-              cityRef,
-              {
-                isChameleon: true,
-              },
-              { merge: true }
-            );
-          }
-          else{
-            let player = this.state.player;
-            player.isChameleon = false;
-            this.setState({ isChameleon: false, player: player });
-            const cityRef = doc(
-              this.db,
-              "players_online",
-              this.state.player.playerId
-            );
-            setDoc(
-              cityRef,
-              {
-                isChameleon: false,
-              },
-              { merge: true }
-            );
-          }
-          break;
-        }
         case "start_vote":
           this.setState({ playerAnswers: event1.data, rendered: "vote" });
           break;
@@ -175,6 +138,7 @@ class App extends Component {
             break;
         case "game_started":
           this.setState({
+            secretWord:"",
             message: "",
             timer: 0,
             currentTurn: "",
@@ -183,8 +147,8 @@ class App extends Component {
             isChameleon: false,
             tieBreaker: false,
           });
-          if (this.state.player.isChameleon) {
-            this.setState({ topic: event1.data.topic });
+          if (item.data().events.data.chameleon_id === this.state.playerId) {
+            this.setState({ topic: event1.data.topic, isChameleon: true });
             this.renderPage("round");
           } else {
             this.setState({
@@ -402,7 +366,7 @@ class App extends Component {
     if (this.state.players.length > 1) {
       console.log("Game starting.");
       // console.log('Game config: ', config);
-      this.state.game.startRound("");
+      this.state.game.startRound("",db);
 
       //   this.state.socket.emit("start game", {
       //     code_game: this.state.code,
