@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import io from "socket.io-client";
 
 import Splash from "./components/Splash";
 import CreateGame from "./components/CreateGame";
@@ -119,7 +118,7 @@ class App extends Component {
       }
       switch (item.data().events.name) {
         case "chameleon": {
-          if ((event1.data = this.state.player.name)) {
+          if ((event1.data == this.state.player.name)) {
             let player = this.state.player;
             player.isChameleon = true;
             this.setState({ isChameleon: true, player: player });

@@ -2,28 +2,6 @@
 const topics=
 [
     {
-        "topic": "Fairy Tales",
-        "language": "english",
-        "words": [
-            "Cinderella",
-            "Snow White",
-            "Peter Pan",
-            "Sleeping Beauty",
-            "Goldilocks",
-            "Rapunzel",
-            "Little Red Riding Hood",
-            "Hansel and Gretel",
-            "Jack and the Beanstalk",
-            "Aladdin",
-            "Pinocchio",
-            "Gingerbread Man",
-            "Hare and the Tortoise",
-            "Princess and the Pea",
-            "Beauty and the Beast",
-            "Three Little Pigs"
-        ]
-    },
-    {
         "topic": "Countries",
         "language": "english",
         "words": [
@@ -90,50 +68,6 @@ const topics=
         ]
     },
     {
-        "topic": "Mythical Creatures",
-        "language": "english",
-        "words": [
-            "Cyclops",
-            "Werewolf",
-            "Loch Ness Monster",
-            "Minotaur",
-            "Pegasus",
-            "Unicorn",
-            "Mermaid",
-            "Hydra",
-            "Medusa",
-            "Dragon",
-            "Phoenix",
-            "Yeti",
-            "Sphinx",
-            "Troll",
-            "Vampire",
-            "Centaur"
-        ]
-    },
-    {
-        "topic": "Cities",
-        "language": "english",
-        "words": [
-            "New York City",
-            "Paris",
-            "Tokyo",
-            "Chicago",
-            "Moscow",
-            "Rome",
-            "Athens",
-            "Los Angeles",
-            "Delhi",
-            "Rio De Janeiro",
-            "Cairo",
-            "San Francisco",
-            "London",
-            "Sydney",
-            "Hong Kong",
-            "Jerusalem"
-        ]
-    },
-    {
         "topic": "Hobbies",
         "language": "english",
         "words": [
@@ -178,35 +112,13 @@ const topics=
         ]
     },
     {
-        "topic": "Toys",
-        "language": "english",
-        "words": [
-            "Lego",
-            "Rubik's Cube",
-            "Yo-yo",
-            "Slinky",
-            "Rocking Horse",
-            "Etch a Sketch",
-            "Frisbee",
-            "G.I. Joe",
-            "Super Soaker",
-            "Teddy Bear",
-            "Hot Wheels",
-            "Hula Hoop",
-            "Cabbage Patch Dolls",
-            "Play Doh",
-            "Barbie",
-            "Furby"
-        ]
-    },
-    {
         "topic": "Sports",
         "language": "english",
         "words": [
             "Football",
             "Basketball",
             "Tennis",
-            "Lacrosse",
+            "Poker",
             "Soccer",
             "Ice Hockey",
             "Badminton",
@@ -214,33 +126,11 @@ const topics=
             "Golf",
             "Sailing",
             "Motor Racing",
-            "Triathlon",
+            "Table Tennis",
             "Baseball",
-            "Squash",
+            "Chess",
             "Wrestling",
             "Cycling"
-        ]
-    },
-    {
-        "topic": "Fictional Characters",
-        "language": "english",
-        "words": [
-            "Indiana Jones",
-            "James Bond",
-            "Dracula",
-            "Super Mario",
-            "Mary Poppins",
-            "Wonder Woman",
-            "Lara Croft",
-            "Homer Simpson",
-            "Spiderman",
-            "Princess Leia",
-            "Robin Hood",
-            "Hercules",
-            "Catwoman",
-            "The Little Mermaid",
-            "Hermione Granger",
-            "Katniss Everdeen"
         ]
     },
     {
@@ -266,116 +156,6 @@ const topics=
         ]
     },
     {
-        "topic": "Bands",
-        "language": "english",
-        "words": [
-            "The Beatles",
-            "Backstreet Boys",
-            "The Beach Boys",
-            "ABBA",
-            "The Rolling Stones",
-            "One Direction",
-            "Red Hot Chili Peppers",
-            "The Eagles",
-            "AC/DC",
-            "Guns N' Roses",
-            "KISS",
-            "The Who",
-            "Nirvana",
-            "Queen",
-            "Jackson 5",
-            "U2" 
-        ]
-    },
-    {
-        "topic": "Civilizations",
-        "language": "english",
-        "words": [
-            "Romans",
-            "Aztecs",
-            "Turks",
-            "Zulu",
-            "Egyptians",
-            "Japanese",
-            "Vikings",
-            "Chinese",
-            "Mayans",
-            "Persians",
-            "Incas",
-            "Spartans",
-            "Mongols",
-            "Greeks",
-            "Spanish",
-            "Aliens"
-        ]
-    },
-    {
-        "topic": "Transport",
-        "language": "english",
-        "words": [
-            "Plane",
-            "Cruise Ship",
-            "Segway",
-            "Train",
-            "Car",
-            "Hovercraft",
-            "Cable Car",
-            "Spaceship",
-            "Tank",
-            "Motorbike",
-            "Jet Ski",
-            "Magic Carpet",
-            "Helicopter",
-            "Bus",
-            "Hot Air Balloon",
-            "Broomstick"
-        ]
-    },
-    {
-        "topic": "Presidents",
-        "language": "english",
-        "words": [
-            "Clinton",
-            "George W. Bush",
-            "Kennedy",
-            "Teddy Roosevelt",
-            "Reagan",
-            "George Bush Sr.",
-            "Lincoln",
-            "Jefferson",
-            "Franklin Delano Roosevelt",
-            "Obama",
-            "Washington",
-            "Adams",
-            "Eisenhower",
-            "Trump",
-            "Nixon",
-            "Carter"
-        ]
-    },
-    {
-        "topic": "Musical Instruments",
-        "language": "english",
-        "words": [
-            "Electric Guitar",
-            "Bass Guitar",
-            "Clarinet",
-            "Harp",
-            "Piano",
-            "Saxophone",
-            "Trumpet",
-            "Bagpipes",
-            "Violin",
-            "Cello",
-            "Voice",
-            "Harmonica",
-            "Drums",
-            "Flute",
-            "Ukelele",
-            "Banjo"
-        ]
-    },
-    {
         "topic": "Under the Sea",
         "language": "english",
         "words": [
@@ -395,28 +175,6 @@ const topics=
             "Killer Whale",
             "Stingray",
             "Mermaid"
-        ]
-    },
-    {
-        "topic": "States",
-        "language": "english",
-        "words": [
-            "California",
-            "Florida",
-            "North Carolina",
-            "Colorado",
-            "Texas",
-            "Montana",
-            "New York",
-            "Washington",
-            "Alabama",
-            "Nevada",
-            "Kentucky",
-            "Illinois",
-            "Hawaii",
-            "Mississippi",
-            "Tennessee",
-            "Alaska"
         ]
     },
     {
@@ -442,28 +200,6 @@ const topics=
         ]
     },
     {
-        "topic": "Authors",
-        "language": "english",
-        "words": [
-            "Shakespeare",
-            "Stephen King",
-            "T.S. Eliot",
-            "Danielle Steel",
-            "J.R.R. Tolkien",
-            "Ernest Hemingway",
-            "Leo Tolstoy",
-            "John Grisham",
-            "C.S. Lewis",
-            "Edgar Allen Poe",
-            "Jane Austen",
-            "Dan Brown",
-            "J.K. Rowling",
-            "Charles Dickens",
-            "Mark Twain",
-            "Agatha Christie"
-        ]
-    },
-    {
         "topic": "Phobias",
         "language": "english",
         "words": [
@@ -486,28 +222,6 @@ const topics=
         ]
     },
     {
-        "topic": "TV Shows",
-        "language": "english",
-        "words": [
-            "Friends",
-            "Breaking Bad",
-            "Happy Days",
-            "Mad Men",
-            "Sex and the City",
-            "Days of our Lives",
-            "The X-Files",
-            "South Park",
-            "Star Trek",
-            "Cheers",
-            "General Hospital",
-            "Game of Thrones",
-            "The Walking Dead",
-            "Lost",
-            "Frasier",
-            "Golden Girls"
-        ]
-    },
-    {
         "topic": "Drinks",
         "language": "english",
         "words": [
@@ -527,50 +241,6 @@ const topics=
             "Tequila",
             "Water",
             "Champagne"
-        ]
-    },
-    {
-        "topic": "Artists",
-        "language": "english",
-        "words": [
-            "Damien Hirst",
-            "Claude Monet",
-            "Banksy",
-            "Rembrandt",
-            "Salvador Dali",
-            "Andy Warhol",
-            "Mark Rothko",
-            "Jackson Pollock",
-            "Pablo Picasso",
-            "Leonardo da Vinci",
-            "Keith Haring",
-            "Edward Hopper",
-            "Vincent Van Gogh",
-            "Michaelangelo",
-            "Jeff Koons",
-            "Georgia O'Keefe"
-        ]
-    },
-    {
-        "topic": "Games",
-        "language": "english",
-        "words": [
-            "Monopoly",
-            "Risk",
-            "Battleship",
-            "Checkers",
-            "Scrabble",
-            "Operation",
-            "Backgammon",
-            "Trivial Pursuit",
-            "Mouse Trap",
-            "Twister",
-            "Clue",
-            "Jenga",
-            "Guess Who",
-            "Pictionary",
-            "Chess",
-            "Hungry Hungry Hippos"
         ]
     },
     {
@@ -618,116 +288,6 @@ const topics=
         ]
     },
     {
-        "topic": "Sci-Fi & Fantasy",
-        "language": "english",
-        "words": [
-            "Star Wars",
-            "The Addams Family",
-            "Dune",
-            "The War of the Worlds",
-            "Lord of the Rings",
-            "2001: A Space Odyssey",
-            "The Princess Bride",
-            "The Martian",
-            "Star Trek",
-            "Terminator",
-            "Alice's Adventures in Wonderland",
-            "WALL-E",
-            "Blade Runner",
-            "His Dark Materials",
-            "Gulliver's Travels",
-            "Edward Scissorhands"
-        ]
-    },
-    {
-        "topic": "World Wonders",
-        "language": "english",
-        "words": [
-            "Pyramids",
-            "Stonehenge",
-            "Christ the Redeemer",
-            "Great Wall of China",
-            "Eiffel Tower",
-            "Golden Gate Bridge",
-            "Machu Picchu",
-            "Mount Rushmore",
-            "Statue of Liberty",
-            "Colosseum",
-            "Taj Mahal",
-            "Empire State Building",
-            "Big Ben",
-            "Sydney House Opera",
-            "Hoover Dam",
-            "Leaning Tower of Pisa"
-        ]
-    },
-    {
-        "topic": "Children's Books",
-        "language": "english",
-        "words": [
-            "The Hobbit",
-            "Matilda",
-            "Stuart Little",
-            "Winnie-the-Pooh",
-            "Peter Pan",
-            "Harry Potter & The Sorcerer's Stone",
-            "The Cat in the Hat",
-            "The Adventures of Tom Sawyer",
-            "The Very Hungry Caterpillar",
-            "Alice in Wonderland",
-            "Charlie and the Chocolate Factory",
-            "The Jungle Book",
-            "101 Dalmations",
-            "The Lion, the Witch and the Wardrobe",
-            "Where the Wild Things Are",
-            "Charlotte's Web"
-        ]
-    },
-    {
-        "topic": "Sports Stars",
-        "language": "english",
-        "words": [
-            "Tiger Woods",
-            "Michael Phelps",
-            "Hope Solo",
-            "Tony Hawk",
-            "Pelé",
-            "Serena Williams",
-            "Babe Ruth",
-            "Michael Johnson",
-            "Michael Jordan",
-            "Muhammad Ali",
-            "Wayne Gretzky",
-            "Usain Bolt",
-            "LeBron James",
-            "Tom Brady",
-            "Kelly Slater",
-            "Hulk Hogan"
-        ]
-    },
-    {
-        "topic": "Music",
-        "language": "english",
-        "words": [
-            "Rock",
-            "Hip Hop",
-            "Rap",
-            "Country",
-            "Heavy Metal",
-            "Pop",
-            "Punk",
-            "House",
-            "Classical",
-            "Techno",
-            "Indie",
-            "Disco",
-            "Funk",
-            "Blues",
-            "Christmas",
-            "Reggae"
-        ]
-    },
-    {
         "topic": "Jobs",
         "language": "english",
         "words": [
@@ -750,28 +310,6 @@ const topics=
         ]
     },
     {
-        "topic": "Cartoon Animals",
-        "language": "english",
-        "words": [
-            "Garfield",
-            "Mickey Mouse",
-            "Nemo",
-            "Dumbo",
-            "Scooby-Doo",
-            "Goofy",
-            "Tony the Tiger",
-            "Wile E. Coyote",
-            "Yogi Bear",
-            "Jiminy Cricket",
-            "Snoopy",
-            "Simba",
-            "Bugs Bunny",
-            "Kung Fu Panda",
-            "Bambi",
-            "Sonic the Hedgehog"
-        ]
-    },
-    {
         "topic": "Food",
         "language": "english",
         "words": [
@@ -791,28 +329,6 @@ const topics=
             "Bread",
             "Chicken",
             "Beef"
-        ]
-    },
-    {
-        "topic": "Historical Figures",
-        "language": "english",
-        "words": [
-            "Jesus",
-            "Darwin",
-            "Christopher Columbus",
-            "Mozart",
-            "Napoleon",
-            "Martin Luther King Jr.",
-            "Mother Teresa",
-            "Cleopatra",
-            "Stalin",
-            "Pocahontas",
-            "Ulysses S. Grant",
-            "Buddha",
-            "Hitler",
-            "Einstein",
-            "Caesar",
-            "Churchill"
         ]
     },
     {
@@ -858,30 +374,7 @@ const topics=
             "Parrot",
             "Gorilla"
         ]
-    },
-    {
-        "topic": "Wedding Anniversaries",
-        "language": "english",
-        "words": [
-            "Wood",
-            "Bronze",
-            "Crystal",
-            "Pearl",
-            "China",
-            "Gold",
-            "Flowers",
-            "Coral",
-            "Paper",
-            "Ruby",
-            "Silk",
-            "Tin",
-            "Cotton",
-            "Diamond",
-            "Leather",
-            "Wool"
-        ]
     }
-
 ]
 
 exports.topics = topics;
